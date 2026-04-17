@@ -140,7 +140,7 @@ export default function Home() {
                 <img
                   src="/images/strain-thc-bomb.webp"
                   alt="STA Exotic THC Bomb, small batch indoor flower"
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="img-grade-sta absolute inset-0 h-full w-full object-cover"
                   loading="eager"
                 />
                 {/* Fade pro info label respirar */}
@@ -172,7 +172,7 @@ export default function Home() {
                 <img
                   src="/images/preroll-premium.jpg"
                   alt="Pre-Rolls Premium"
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="img-grade-sta absolute inset-0 h-full w-full object-cover"
                   loading="eager"
                 />
               </div>
@@ -181,7 +181,7 @@ export default function Home() {
                 <img
                   src="/images/strain-notorious.webp"
                   alt="Notorious THC"
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="img-grade-sta absolute inset-0 h-full w-full object-cover"
                   loading="eager"
                 />
               </div>
@@ -290,7 +290,7 @@ export default function Home() {
                     <img
                       src={p.image}
                       alt={`${p.name} — ${p.tag}`}
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="img-grade-sta absolute inset-0 h-full w-full object-cover"
                       loading="lazy"
                     />
                     {/* Fade bottom pro texto respirar contra imagem */}
@@ -350,8 +350,44 @@ export default function Home() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection delay={0.2}>
-            <div className="mt-12 sm:mt-16">
+          {/* Banner landscape no topo do locator: mostra produto STA
+              na prateleira, quebra a monotonia visual antes do mapa. */}
+          <AnimatedSection delay={0.15}>
+            <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[var(--color-line-strong)] sm:mt-12 sm:aspect-[21/9]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/strain-catalog.webp"
+                alt="STA Exotic product catalog, small batch flower stocked across NY + CA dispensaries"
+                className="img-grade-sta absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+              />
+              {/* Vinheta editorial — pulls focus, blends with bg */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at center, transparent 0%, rgba(10,8,8,0.55) 85%), linear-gradient(to top, rgba(10,8,8,0.9) 0%, transparent 35%, transparent 70%, rgba(10,8,8,0.5) 100%)",
+                }}
+              />
+              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 sm:bottom-7 sm:left-7 sm:right-7">
+                <div>
+                  <p className="font-mono-xs text-[var(--color-ink-soft)]">
+                    Retail footprint
+                  </p>
+                  <p className="font-display mt-1 text-xl text-[var(--color-ink)] sm:text-2xl">
+                    NY · CA · 80+ shelves
+                  </p>
+                </div>
+                <span className="font-mono-xs text-[var(--color-accent)]">
+                  Live
+                </span>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.25}>
+            <div className="mt-10 sm:mt-14">
               <StoreLocator />
             </div>
           </AnimatedSection>
@@ -404,6 +440,35 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+
+              {/* Editorial packaging shot — portrait, ancora a coluna esquerda
+                  contra o form na direita. Mobile: empilha abaixo da lista.
+                  Desktop: cresce natural, aspect 4/5 bate com imagem original. */}
+              <div className="relative mt-10 aspect-[4/5] w-full max-w-sm overflow-hidden rounded-2xl border border-[var(--color-line-strong)]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/editorial-1.jpg"
+                  alt="STA Exotic packaging, wholesale catalog shot"
+                  className="img-grade-sta absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(10,8,8,0.85) 0%, transparent 40%, transparent 70%, rgba(10,8,8,0.35) 100%)",
+                  }}
+                />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="font-mono-xs text-[var(--color-ink-soft)]">
+                    Wholesale catalog
+                  </p>
+                  <p className="font-display mt-1 text-lg text-[var(--color-ink)]">
+                    Small batch, packed in house
+                  </p>
+                </div>
+              </div>
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
@@ -477,18 +542,54 @@ export default function Home() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div
-                id="press-form"
-                className="rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-raised)] p-6 sm:p-7"
-              >
-                <p className="font-mono-xs text-[var(--color-ink-muted)]">
-                  Request samples
-                </p>
-                <h3 className="font-display mt-2 text-2xl text-[var(--color-ink)]">
-                  Press access
-                </h3>
-                <div className="mt-5">
-                  <PressForm />
+              <div className="flex flex-col gap-6">
+                {/* Editorial press kit shot — ancora coluna direita, fecha
+                    vacuum visual acima do form. Aspect 4/5 portrait bate
+                    com foto original 785x1024. */}
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[var(--color-line-strong)]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/editorial-2.jpg"
+                    alt="STA Exotic editorial press kit, product photography for media"
+                    className="img-grade-sta absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(10,8,8,0.9) 0%, transparent 40%, transparent 65%, rgba(10,8,8,0.4) 100%)",
+                    }}
+                  />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                    <div>
+                      <p className="font-mono-xs text-[var(--color-ink-soft)]">
+                        Press photography
+                      </p>
+                      <p className="font-display mt-1 text-lg text-[var(--color-ink)]">
+                        Editorial ready
+                      </p>
+                    </div>
+                    <span className="font-mono-xs text-[var(--color-accent)]">
+                      HI-RES
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  id="press-form"
+                  className="rounded-2xl border border-[var(--color-line-strong)] bg-[var(--color-bg-raised)] p-6 sm:p-7"
+                >
+                  <p className="font-mono-xs text-[var(--color-ink-muted)]">
+                    Request samples
+                  </p>
+                  <h3 className="font-display mt-2 text-2xl text-[var(--color-ink)]">
+                    Press access
+                  </h3>
+                  <div className="mt-5">
+                    <PressForm />
+                  </div>
                 </div>
               </div>
             </AnimatedSection>
@@ -501,73 +602,111 @@ export default function Home() {
         id="story"
         className="border-b border-[var(--color-line)] bg-[var(--color-bg)] py-20 sm:py-28 lg:py-36"
       >
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <AnimatedSection>
-            <p className="font-mono-xs text-[var(--color-ink-soft)]">
-              The story
-            </p>
-            <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.75rem)] text-[var(--color-ink)]">
-              Before there was<br />
-              a <span className="italic text-[var(--color-accent)]">license</span>,<br />
-              there was us.
-            </h2>
-          </AnimatedSection>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-20">
+            <div>
+              <AnimatedSection>
+                <p className="font-mono-xs text-[var(--color-ink-soft)]">
+                  The story
+                </p>
+                <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.75rem)] text-[var(--color-ink)]">
+                  Before there was<br />
+                  a <span className="italic text-[var(--color-accent)]">license</span>,<br />
+                  there was us.
+                </h2>
+              </AnimatedSection>
 
-          <AnimatedSection delay={0.2}>
-            <div className="mt-10 space-y-6 text-[15px] leading-[1.75] text-[var(--color-ink-muted)] sm:text-base">
-              <p>
-                STA started in the boroughs, years before New York regulators
-                drew up OCM. We learned the plant from people who grew it in
-                basements and back rooms, the way most real cannabis knowledge
-                moves. That education does not show up on a CV. It shows up in
-                the jar.
-              </p>
-              <p>
-                In 2024 we took the harder path on purpose. We sat for the
-                processor license, filed the paperwork, paid the fees, passed
-                inspection. OCM-PROC-24-000010. Not because the legal way is
-                prettier, but because we wanted the brand to live past the
-                decade.
-              </p>
-              <p>
-                Today we run small batch. We know the cultivators we source
-                from. We pack in house, we hand off only to licensed
-                distribution, we keep buyer relationships direct. If you are a
-                dispensary that actually reads the jar, we want to meet you.
-              </p>
+              <AnimatedSection delay={0.2}>
+                <div className="mt-10 space-y-6 text-[15px] leading-[1.75] text-[var(--color-ink-muted)] sm:text-base">
+                  <p>
+                    STA started in the boroughs, years before New York regulators
+                    drew up OCM. We learned the plant from people who grew it in
+                    basements and back rooms, the way most real cannabis knowledge
+                    moves. That education does not show up on a CV. It shows up in
+                    the jar.
+                  </p>
+                  <p>
+                    In 2024 we took the harder path on purpose. We sat for the
+                    processor license, filed the paperwork, paid the fees, passed
+                    inspection. OCM-PROC-24-000010. Not because the legal way is
+                    prettier, but because we wanted the brand to live past the
+                    decade.
+                  </p>
+                  <p>
+                    Today we run small batch. We know the cultivators we source
+                    from. We pack in house, we hand off only to licensed
+                    distribution, we keep buyer relationships direct. If you are a
+                    dispensary that actually reads the jar, we want to meet you.
+                  </p>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection delay={0.4}>
+                <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-3">
+                    {/* Logo real STA mantido como selo da marca */}
+                    <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[var(--color-line-strong)] bg-[var(--color-bg-raised)]">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="/images/logo.png"
+                        alt="STA Exotic logo"
+                        className="absolute inset-0 h-full w-full object-contain p-1.5"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm text-[var(--color-ink)]">
+                        Founding team
+                      </p>
+                      <p className="font-mono-xs text-[var(--color-ink-soft)]">
+                        New York · Since the legacy years
+                      </p>
+                    </div>
+                  </div>
+                  <a
+                    href="#retailers"
+                    className="text-sm text-[var(--color-accent)] link-underline self-start sm:self-auto"
+                  >
+                    Work with us
+                  </a>
+                </div>
+              </AnimatedSection>
             </div>
-          </AnimatedSection>
 
-          <AnimatedSection delay={0.4}>
-            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-3">
-                {/* Logo real STA em vez de placeholder vazio */}
-                <div className="relative h-12 w-12 overflow-hidden rounded-full border border-[var(--color-line-strong)] bg-[var(--color-bg-raised)]">
+            {/* Editorial lateral — puxa pra direita no desktop, empilha
+                acima em mobile (order-first via flex, ou no grid fica
+                abaixo do copy porque é ordem natural). Pra priorizar
+                foto antes do copy no mobile, usa order. */}
+            <AnimatedSection delay={0.15}>
+              <div className="order-first mb-6 lg:order-none lg:mb-0 lg:sticky lg:top-24">
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[var(--color-line-strong)]">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/images/logo.png"
-                    alt="STA Exotic logo"
-                    className="absolute inset-0 h-full w-full object-contain p-1.5"
+                    src="/images/editorial-3.jpg"
+                    alt="STA Exotic legacy process, small batch flower from seed to shelf"
+                    className="img-grade-sta absolute inset-0 h-full w-full object-cover"
                     loading="lazy"
                   />
-                </div>
-                <div>
-                  <p className="text-sm text-[var(--color-ink)]">
-                    Founding team
-                  </p>
-                  <p className="font-mono-xs text-[var(--color-ink-soft)]">
-                    New York · Since the legacy years
-                  </p>
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(to top, rgba(10,8,8,0.9) 0%, rgba(10,8,8,0.2) 40%, transparent 70%, rgba(10,8,8,0.3) 100%)",
+                    }}
+                  />
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <p className="font-mono-xs text-[var(--color-ink-soft)]">
+                      From legacy to licensed
+                    </p>
+                    <p className="font-display mt-1 text-xl text-[var(--color-ink)] sm:text-2xl">
+                      The work speaks
+                    </p>
+                  </div>
                 </div>
               </div>
-              <a
-                href="#retailers"
-                className="text-sm text-[var(--color-accent)] link-underline self-start sm:self-auto"
-              >
-                Work with us
-              </a>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 
