@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+:root {
+  /* Paleta STA - dark editorial cannabis premium */
+  --color-bg: #0a0808;
+  --color-bg-raised: #121010;
+  --color-ink: #f5f2ee;
+  --color-ink-muted: #9a9290;
+  --color-ink-soft: #635d5c;
+  --color-line: rgba(245, 242, 238, 0.08);
+  --color-line-strong: rgba(245, 242, 238, 0.14);
+
+  /* Accent - rosa profundo (brand STA pega o cor do IG deles) */
+  --color-accent: #e94f6f;
+  --color-accent-hot: #ff6d88;
+  --color-accent-deep: #a9243f;
+
+  /* Outros accents de apoio */
+  --color-leaf: #638568;
+  --color-ember: #d98c3c;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-bg);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-feature-settings: "kern" 1, "liga" 1, "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Typography ===== */
+.font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.94;
+}
+
+.font-mono-xs {
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+/* ===== Effects ===== */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 2;
+}
+
+/* Gradient mesh hero - CSS-only, performa bem em mobile */
+.mesh {
+  background:
+    radial-gradient(at 18% 22%, rgba(233, 79, 111, 0.22) 0px, transparent 48%),
+    radial-gradient(at 82% 18%, rgba(169, 36, 63, 0.16) 0px, transparent 50%),
+    radial-gradient(at 60% 82%, rgba(217, 140, 60, 0.09) 0px, transparent 52%),
+    radial-gradient(at 14% 86%, rgba(99, 133, 104, 0.08) 0px, transparent 48%);
+  filter: blur(8px);
+}
+
+@keyframes mesh-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(2%, -1.5%, 0) scale(1.03); }
+  66% { transform: translate3d(-1.5%, 2%, 0) scale(1.05); }
+}
+.mesh-animate {
+  animation: mesh-drift 22s ease-in-out infinite;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Hairline accent */
+.hairline {
+  height: 1px;
+  background: var(--color-line-strong);
+}
+.hairline-accent {
+  width: 32px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+/* Links with underline animation */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Card hover */
+.card-tilt {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+.card-tilt:hover {
+  transform: translateY(-4px);
+}
+
+/* Focus ring */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Scroll snap for horizontal rails on mobile */
+.snap-rail {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-item {
+  scroll-snap-align: start;
+}
+
+/* Button primary */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--color-accent);
+  color: #0a0808;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--color-accent-hot);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-ink);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .mesh-animate,
+  .animate-marquee {
+    animation: none;
+  }
+}
