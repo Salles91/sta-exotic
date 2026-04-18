@@ -2,8 +2,8 @@
 
 /**
  * SectionBackground, translucent editorial photo that sits behind a section.
- * Framer Motion whileInView fades the image in as user scrolls into viewport.
- * Dark gradient overlay preserves legibility of the copy on top.
+ * Uses CSS keyframe fade in plus parallax via Framer Motion useScroll so it
+ * stays reliable across browsers and server rendered states.
  *
  * Usage:
  *   <section className="relative overflow-hidden ...">
@@ -25,15 +25,11 @@ type Props = {
 };
 
 const OVERLAYS: Record<NonNullable<Props["overlayVariant"]>, string> = {
-  // default, balanced, works for most copy-heavy sections
   default:
     "linear-gradient(180deg, rgba(10,8,8,0.72) 0%, rgba(10,8,8,0.82) 50%, rgba(10,8,8,0.95) 100%)",
-  // soft, for hero where mesh is doing heavy lifting
   soft: "linear-gradient(180deg, rgba(10,8,8,0.55) 0%, rgba(10,8,8,0.7) 55%, rgba(10,8,8,0.92) 100%)",
-  // strong, for retailer/press where forms sit on top
   strong:
     "linear-gradient(180deg, rgba(10,8,8,0.82) 0%, rgba(10,8,8,0.9) 45%, rgba(10,8,8,0.96) 100%)",
-  // edge, for story where copy is dense and needs clarity
   edge: "radial-gradient(ellipse at center, rgba(10,8,8,0.55) 0%, rgba(10,8,8,0.9) 85%), linear-gradient(180deg, rgba(10,8,8,0.65) 0%, rgba(10,8,8,0.95) 100%)",
 };
 
@@ -50,20 +46,14 @@ export default function SectionBackground({
     target: ref,
     offset: ["start end", "end start"],
   });
-  // parallax, image drifts 12 percent across the scroll range
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
 
   return (
-    <motion.div
+    <div
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity }}
-      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-      // amount 0 so any intersection triggers, margin 200px so the
-      // animation fires slightly before the section enters viewport
-      viewport={{ once: true, amount: 0, margin: "0px 0px -200px 0px" }}
+      className="sta-bg-fade pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      style={{ ["--sta-bg-opacity" as string]: opacity }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
@@ -79,6 +69,6 @@ export default function SectionBackground({
         className="absolute inset-0"
         style={{ background: OVERLAYS[overlayVariant] }}
       />
-    </motion.div>
+    </div>
   );
 }
