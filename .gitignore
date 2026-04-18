@@ -7,3 +7,9 @@ node_modules
 next-env.d.ts
 
 .vercel
+
+# Local Netlify folder
+.netlify
+
+# npm lock (repo uses pnpm, npm only used for Netlify CLI local deploys)
+package-lock.json
