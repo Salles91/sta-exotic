@@ -61,7 +61,9 @@ export default function SectionBackground({
       initial={{ opacity: 0 }}
       whileInView={{ opacity }}
       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-      viewport={{ once: true, amount: 0.15 }}
+      // amount 0 so any intersection triggers, margin 200px so the
+      // animation fires slightly before the section enters viewport
+      viewport={{ once: true, amount: 0, margin: "0px 0px -200px 0px" }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <motion.img
@@ -69,6 +71,8 @@ export default function SectionBackground({
         alt={alt}
         className="img-grade-sta absolute inset-0 h-[112%] w-full object-cover"
         loading={eager ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={eager ? "high" : "auto"}
         style={parallax ? { y } : undefined}
       />
       <div
