@@ -3,6 +3,7 @@ import HeroMesh from "@/components/HeroMesh";
 import Nav from "@/components/Nav";
 import RetailerForm from "@/components/RetailerForm";
 import PressForm from "@/components/PressForm";
+import SectionBackground from "@/components/SectionBackground";
 import StoreLocator from "@/components/StoreLocator";
 
 const stats = [
@@ -60,7 +61,15 @@ export default function Home() {
       <Nav />
 
       {/* ================== HERO ================== */}
-      <section className="relative flex min-h-[100svh] items-center px-4 pb-20 pt-28 sm:px-6 sm:pt-32 lg:pb-24">
+      <section className="relative flex min-h-[100svh] items-center overflow-hidden px-4 pb-20 pt-28 sm:px-6 sm:pt-32 lg:pb-24">
+        {/* Editorial NYC night photo, sits underneath the mesh gradient. */}
+        <SectionBackground
+          src="/images/bg/bg-hero-nyc-night.jpg"
+          alt=""
+          opacity={0.22}
+          eager
+          overlayVariant="soft"
+        />
         <HeroMesh />
 
         <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
@@ -224,8 +233,16 @@ export default function Home() {
       </div>
 
       {/* ================== STATS ================== */}
-      <section className="border-b border-[var(--color-line)] bg-[var(--color-bg)] py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <section className="relative overflow-hidden border-b border-[var(--color-line)] bg-[var(--color-bg)] py-16 sm:py-24">
+        <SectionBackground
+          src="/images/bg/bg-stats-urban.jpg"
+          alt=""
+          opacity={0.2}
+          eager
+          parallax
+          overlayVariant="default"
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
           <AnimatedSection>
             <p className="font-mono-xs text-[var(--color-ink-soft)]">
               By the numbers
@@ -330,9 +347,16 @@ export default function Home() {
       {/* ================== STORE LOCATOR ================== */}
       <section
         id="locator"
-        className="border-b border-[var(--color-line)] bg-[var(--color-bg)] py-20 sm:py-28 lg:py-36"
+        className="relative overflow-hidden border-b border-[var(--color-line)] bg-[var(--color-bg)] py-20 sm:py-28 lg:py-36"
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <SectionBackground
+          src="/images/bg/bg-locator-skyline.jpg"
+          alt=""
+          opacity={0.3}
+          parallax
+          overlayVariant="default"
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
           <AnimatedSection>
             <div className="max-w-2xl">
               <p className="font-mono-xs text-[var(--color-ink-soft)]">
@@ -399,17 +423,24 @@ export default function Home() {
         id="retailers"
         className="relative overflow-hidden border-b border-[var(--color-line)] bg-[var(--color-bg-raised)] py-20 sm:py-28 lg:py-36"
       >
+        <SectionBackground
+          src="/images/bg/bg-retailers-craft.jpg"
+          alt=""
+          opacity={0.22}
+          parallax
+          overlayVariant="strong"
+        />
         {/* subtle accent gradient */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-40 top-0 h-[500px] w-[500px] rounded-full opacity-30"
+          className="pointer-events-none absolute -right-40 top-0 z-[1] h-[500px] w-[500px] rounded-full opacity-30"
           style={{
             background:
               "radial-gradient(circle, rgba(233,79,111,0.35) 0%, transparent 60%)",
           }}
         />
 
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
             <AnimatedSection>
               <p className="font-mono-xs text-[var(--color-ink-soft)]">
@@ -483,9 +514,16 @@ export default function Home() {
       {/* ================== PRESS ================== */}
       <section
         id="press"
-        className="border-b border-[var(--color-line)] bg-[var(--color-bg)] py-20 sm:py-28 lg:py-36"
+        className="relative overflow-hidden border-b border-[var(--color-line)] bg-[var(--color-bg)] py-20 sm:py-28 lg:py-36"
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionBackground
+          src="/images/bg/bg-press-smoke.jpg"
+          alt=""
+          opacity={0.24}
+          parallax
+          overlayVariant="strong"
+        />
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
             <AnimatedSection>
               <p className="font-mono-xs text-[var(--color-ink-soft)]">
@@ -600,9 +638,16 @@ export default function Home() {
       {/* ================== STORY ================== */}
       <section
         id="story"
-        className="border-b border-[var(--color-line)] bg-[var(--color-bg)] py-20 sm:py-28 lg:py-36"
+        className="relative overflow-hidden border-b border-[var(--color-line)] bg-[var(--color-bg)] py-20 sm:py-28 lg:py-36"
       >
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionBackground
+          src="/images/bg/bg-story-legacy.jpg"
+          alt=""
+          opacity={0.28}
+          parallax
+          overlayVariant="edge"
+        />
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-20">
             <div>
               <AnimatedSection>
